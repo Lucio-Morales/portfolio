@@ -1,5 +1,7 @@
+import { ProjectsContent } from './styles';
+
 const Projects = () => {
-  return <>Projects page</>;
+  return <ProjectsContent>projects section here!</ProjectsContent>;
 };
 
 export default Projects;

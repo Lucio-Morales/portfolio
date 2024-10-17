@@ -1,9 +1,9 @@
-import Main from '../../components/main';
+import Hero from '../../components/hero';
 
 const Home = () => {
   return (
     <>
-      <Main />
+      <Hero />
     </>
   );
 };

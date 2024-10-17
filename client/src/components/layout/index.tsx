@@ -1,14 +1,15 @@
 import React from 'react';
+import { MainLayout } from './styles';
+// import Footer from '../footer';
 import Header from '../header';
-import Footer from '../footer';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <MainLayout>
       <Header />
       {children}
-      <Footer />
-    </div>
+      {/* <Footer /> */}
+    </MainLayout>
   );
 };
 
