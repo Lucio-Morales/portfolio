@@ -8,7 +8,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     line-height: 1.3;
     }
-
+html {
+overflow-y: scroll;}
     html, body {
     height: 100%;
     scroll-behavior: smooth;
@@ -23,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
     }
+
+    
 `;
 
 export default GlobalStyle;

@@ -85,10 +85,10 @@ const Content = styled.div`
 
   button {
     padding: 0.75rem 1.75rem;
-    background: linear-gradient(135deg, #333, #444); /* Degradado sutil */
+    background: linear-gradient(135deg, #333, #442); /* Degradado sutil */
     color: white;
     text-decoration: none;
-    border-radius: 12px; /* Bordes más redondeados */
+    border-radius: 12px;
     transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.2s ease;
     font-size: 1.1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
