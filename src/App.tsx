@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import GlobalStyles from './styled-components/GlobalStyles';
 import HeaderSection from './components/header';
 import MainSection from './components/main';
-import NavBar from './components/nav';
 import FooterSection from './components/footer';
+import useWindowWidth from './hooks/useWindowWidth';
+import MobileNavBar from './components/nav';
 
 const Layout = styled.div`
   display: grid;
@@ -11,12 +12,15 @@ const Layout = styled.div`
 `;
 
 function App() {
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth < 768;
+
   return (
     <>
       <GlobalStyles />
       <Layout>
         <HeaderSection />
-        <NavBar />
+        {isMobile ? <MobileNavBar /> : <div>Desktop navbar</div>}
         <MainSection />
         <FooterSection />
       </Layout>

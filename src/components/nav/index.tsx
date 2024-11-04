@@ -1,34 +1,10 @@
-// import styled from 'styled-components';
-// import { FaHome, FaUser, FaFolderOpen } from 'react-icons/fa';
-
-// const Nav = styled.nav`
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: center;
-//   position: fixed;
-//   bottom: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 60px;
-//   background-color: #000000;
-//   color: white;
-//   z-index: 10000;
-
-//   a {
-//     padding: 10px 15px;
-//     color: white;
-//     text-decoration: none;
-//     font-size: 1.7rem;
-//     transition: color 0.3s ease, transform 0.3s ease;
-
-//     &:hover {
-//       transform: scale(1.2); /* Animación al hacer hover */
-//     }
-//   }
-// `;
-
 import styled from 'styled-components';
 import { FaHome, FaUser, FaFolderOpen } from 'react-icons/fa';
+import { useState } from 'react';
+
+interface ActiveProp {
+  active?: boolean;
+}
 
 const Nav = styled.nav`
   display: flex;
@@ -36,71 +12,76 @@ const Nav = styled.nav`
   align-items: center;
   padding-top: 8px;
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%; /* Ancho en pantallas pequeñas */
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 60px;
-  background-color: #1a1a1a;
-  border: 1px solid #4d4d4d;
-  border-radius: 30px;
-  color: white;
+  background-color: #000;
+  color: #fff;
   z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+`;
 
-  a {
-    padding: 0 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 1.8rem;
-    line-height: 60px;
-    transition: color 0.3s ease, transform 0.3s ease;
+const IconWrapper = styled.a<ActiveProp>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: ${(props) => (props.active ? '#fff' : '#aaa')};
+  transition: color 0.2s ease;
+  text-decoration: none;
 
-    &:hover {
-      color: silver;
-      transform: scale(1.2);
-    }
-  }
-
-  /* tablets */
-  @media (min-width: 768px) {
-    width: 50%; /* Menos ancha en pantallas medianas */
-    height: 50px; /* Reduce la altura */
-    border-radius: 25px;
-
-    a {
-      font-size: 2rem;
-      line-height: 50px;
-    }
-  }
-
-  /* escritorio */
-  @media (min-width: 1024px) {
-    width: 30%;
-    height: 50px;
-    border-radius: 20px;
-
-    a {
-      font-size: 1.7rem;
-      line-height: 45px;
-    }
+  &:hover {
+    color: #fff;
   }
 `;
 
-const NavBar = () => {
+const ActiveIndicator = styled.div<ActiveProp>`
+  height: 2px;
+  width: 90%;
+  background-color: tomato;
+  border-radius: 2px;
+  margin-top: 6px;
+  transition: opacity 0.2s ease;
+  opacity: ${(props) => (props.active ? '1' : '0')};
+`;
+
+const MobileNavBar = () => {
+  const [activeTab, setActiveTab] = useState('home');
+
+  const handleSetActive = (tab: string) => {
+    setActiveTab(tab);
+    document.getElementById(tab)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Nav>
-      <a href="#home">
+      <IconWrapper
+        href="#home"
+        active={activeTab === 'home'}
+        onClick={() => handleSetActive('home')}
+      >
         <FaHome />
-      </a>
-      <a href="#about">
+        <ActiveIndicator active={activeTab === 'home'} />
+      </IconWrapper>
+      <IconWrapper
+        href="#about"
+        active={activeTab === 'about'}
+        onClick={() => handleSetActive('about')}
+      >
         <FaUser />
-      </a>
-      <a href="#projects">
+        <ActiveIndicator active={activeTab === 'about'} />
+      </IconWrapper>
+      <IconWrapper
+        href="#projects"
+        active={activeTab === 'projects'}
+        onClick={() => handleSetActive('projects')}
+      >
         <FaFolderOpen />
-      </a>
+        <ActiveIndicator active={activeTab === 'projects'} />
+      </IconWrapper>
     </Nav>
   );
 };
 
-export default NavBar;
+export default MobileNavBar;
