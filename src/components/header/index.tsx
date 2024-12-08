@@ -1,25 +1,19 @@
 import styled from 'styled-components';
+import StyledButton from './components/StyledButton';
 
 const Header = styled.header`
+  background-color: #050505;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1) 12%);
   color: #ffffff;
   text-align: center;
   padding: 20px;
   overflow: hidden;
   position: relative;
-
-  @media (min-width: 768px) {
-    background: radial-gradient(
-      circle,
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 1) 12%
-    );
-  }
+  font-family: 'Inter Tight', sans-serif;
 
   h1,
   p,
@@ -28,25 +22,34 @@ const Header = styled.header`
   }
 
   h1 {
-    font-size: 2.8rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 6rem;
+    font-weight: 300;
+    letter-spacing: -0.3rem;
     animation: fadeInDown 1s ease-out;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin-bottom: -1rem;
   }
 
   p {
-    margin: 15px 0;
-    line-height: 1.6;
-    font-size: 1.8rem;
-    max-width: 600px;
+    margin: 0 0 50px 0;
+    max-width: 650px;
+    color: #b0b0b0;
     animation: fadeInUp 1s ease-out;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .subtitulo {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #b0b0b0;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards;
   }
 
   @keyframes fadeInDown {
     0% {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-30px);
     }
     100% {
       opacity: 1;
@@ -57,93 +60,43 @@ const Header = styled.header`
   @keyframes fadeInUp {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
-`;
 
-const ShadowOverlay = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05),
-    rgba(0, 0, 0, 0.8)
-  );
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  border: 1px solid silver;
-  animation: rotateClockwise 40s infinite linear;
+  /* MOBILE STYLES */
+  @media (max-width: 768px) {
+    padding: 20px 10px;
 
-  @keyframes rotateClockwise {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
+    h1 {
+      font-size: 4.2rem;
+      margin-bottom: 5px;
     }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
+
+    p {
+      max-width: 90%;
+      margin-bottom: 30px;
+    }
+
+    .subtitulo {
+      font-size: 1.3rem;
+    }
+    button {
+      margin-top: 40px; /* Mayor espacio entre el subtítulo y el botón en móviles */
     }
   }
 `;
-const ShadowOverlayReverse = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05),
-    rgba(0, 0, 0, 0.8)
-  );
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  border: 1px solid tomato;
-  animation: rotateCounterClockwise 40s infinite linear;
 
-  @keyframes rotateCounterClockwise {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(-360deg); /* Rotación en dirección contraria */
-    }
-  }
-`;
-const Button = styled.a`
-  margin-top: 30px;
-  padding: 12px 24px;
-  background-color: #000000;
-  color: #ffffff;
-  text-decoration: none;
-  border: 2px solid #ffffff;
-  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #333333;
-  }
-
-  @media (hover: none) {
-    &:hover {
-      background-color: #000000;
-    }
-  }
-`;
 const HeaderSection = () => {
   return (
     <Header id="home">
-      <ShadowOverlay />
-      <ShadowOverlayReverse />
-      <h1>Hi! I'm Lucio</h1>
-      <p>A software developer from Argentina</p>
-      <Button href="#projects">Projects</Button>
+      <h1>Lucio Morales</h1>
+      <p className="subtitulo">Freelance UX UI Designer and Web Developer</p>
+      <StyledButton />
     </Header>
   );
 };
