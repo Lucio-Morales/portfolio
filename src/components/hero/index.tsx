@@ -13,7 +13,7 @@ const Hero = styled.header`
   padding: 20px;
   overflow: hidden;
   position: relative;
-  font-family: 'Inter Tight', sans-serif;
+  // font-family: 'Inter Tight', sans-serif;
 
   h1,
   p,

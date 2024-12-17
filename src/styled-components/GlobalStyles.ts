@@ -19,7 +19,7 @@ html,body
     }
 
   body {
-    font-family:  sans-serif; 
+    font-family: 'Inter Tight',  sans-serif; 
     line-height: 1.6; 
     font-size: 16px; 
     color: #333; 
