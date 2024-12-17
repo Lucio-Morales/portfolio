@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import StyledButton from './components/StyledButton';
 
-const Header = styled.header`
-  background-color: #050505;
+const Hero = styled.header`
+  // background-color: #050505;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,14 +91,16 @@ const Header = styled.header`
   }
 `;
 
-const HeaderSection = () => {
+const HeroSection = () => {
   return (
-    <Header id="home">
+    <Hero id="home">
       <h1>Lucio Morales</h1>
       <p className="subtitulo">Freelance UX UI Designer and Web Developer</p>
-      <StyledButton />
-    </Header>
+      <a href="#projects">
+        <StyledButton />
+      </a>
+    </Hero>
   );
 };
 
-export default HeaderSection;
+export default HeroSection;

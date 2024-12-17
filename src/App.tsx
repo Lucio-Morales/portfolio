@@ -1,11 +1,13 @@
 import GlobalStyles from './styled-components/GlobalStyles';
-import HeaderSection from './components/header';
+import HeroSection from './components/hero';
+import Projects from './components/projects';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <HeaderSection />
+      <HeroSection />
+      <Projects />
     </>
   );
 }
